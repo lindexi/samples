@@ -7,7 +7,8 @@ internal class SyncResource
     // Use a monitor to enforce synchronization.
     public void Access()
     {
-        lock(this) {
+        lock (this)
+        {
             Console.WriteLine("Starting synchronized resource access on thread #{0}",
                               Thread.CurrentThread.ManagedThreadId);
             if (Thread.CurrentThread.ManagedThreadId % 2 == 0)
@@ -43,8 +44,8 @@ public class App
     private static SyncResource SyncRes = new SyncResource();
     private static UnSyncResource UnSyncRes = new UnSyncResource();
 
-   public static void Main()
-   {
+    public static void Main()
+    {
         // Set the number of synchronized calls.
         numOps = 5;
         for (int ctr = 0; ctr <= 4; ctr++)
@@ -62,7 +63,7 @@ public class App
         // Wait until this WaitHandle is signaled.
         opsAreDone.WaitOne();
         Console.WriteLine("\t\nAll unsynchronized thread operations have completed.\n");
-   }
+    }
 
     static void SyncUpdateResource(Object state)
     {
